@@ -6,7 +6,11 @@
 
         public bool CanBeCancelledBy(User user)
         {
-            if (user.IsAdmin)
+            return(user.IsAdmin || MadeBy == user);
+
+          /*  LONG VERSION
+           * 
+           * if (user.IsAdmin)
             {
                 return true;
             }
@@ -16,6 +20,7 @@
             }
 
             return false;
+            */
         }
         
     }
