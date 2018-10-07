@@ -1,13 +1,13 @@
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using TestNinja.TestNinja.UnitTests.Fundamentals;
 
 namespace TestNinja.UnitTests
 {
-    [TestClass]
-    public class ReservationTests
+    [TestFixture]
+    public class NUnitReservationTests
     {
-        [TestMethod]
+        [Test]
         public void CanBeCancelledBy_UserIsAdmin_Scenario_ReturnTrue()
         {
             // arrange: create an instance of the Reservation class (a Reservation object)
@@ -16,11 +16,11 @@ namespace TestNinja.UnitTests
             // act: call a method that we want to test on the object. Need to get result and check it's correct
             var result = reservation.CanBeCancelledBy(new User { IsAdmin = true });
 
-            //assert: check it's correct
-            Assert.IsTrue(result);
+            //assert: check it's correct. NUnit assertion reads like plain English
+            Assert.That(result, Is.True);
         }
 
-        [TestMethod]
+        [Test]
         public void CanBeCancelledBy_SameUserThatMadeReservation_ReturnTrue()
         {
             // arrange
@@ -31,18 +31,18 @@ namespace TestNinja.UnitTests
             var result = reservation.CanBeCancelledBy(user);
 
             // assert
-            Assert.IsTrue(result);
+            Assert.That(result, Is.True);
         }
 
-        [TestMethod]
+        [Test]
         public void CanBeCancelledByNonAdminUser_ReturnFalse()
         {
             var reservation = new Reservation();
             var result = reservation.CanBeCancelledBy(new User{IsAdmin = false});
-            Assert.IsFalse(result);
+            Assert.That(result, Is.False);
         }
 
-        [TestMethod]
+        [Test]
         public void CanBeCancelledByAnotherUserWhoDidNotMakeBooking_ReturnFalse()
         {
             var reservation = new Reservation { MadeBy = new User()};
