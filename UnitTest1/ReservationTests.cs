@@ -5,7 +5,7 @@ using TestNinja.TestNinja.UnitTests.Fundamentals;
 namespace TestNinja.UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class ReservationTests
     {
         [TestMethod]
         public void CanBeCancelledBy_UserIsAdmin_Scenario_ReturnTrue()
@@ -18,6 +18,29 @@ namespace TestNinja.UnitTests
 
             //assert: check it's correct
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void CanBeCancelledBy_UserMadeReservation_ReturnTrue()
+        {
+            // arrange
+            var reservation = new Reservation();
+            //var reservationMadeByUser = new Reservation().MadeBy;
+            var user = new User();
+
+            // act
+            var result = reservation.CanBeCancelledBy(user);
+
+            // assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void CannotBeCancelledByNonAdminUser_ReturnFalse()
+        {
+            var reservation = new Reservation();
+            var result = reservation.CanBeCancelledBy(new User{IsAdmin = false});
+            Assert.IsFalse(result);
         }
     }
 }
