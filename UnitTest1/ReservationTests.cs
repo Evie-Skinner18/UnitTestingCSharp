@@ -21,12 +21,11 @@ namespace TestNinja.UnitTests
         }
 
         [TestMethod]
-        public void CanBeCancelledBy_UserMadeReservation_ReturnTrue()
+        public void CanBeCancelledBy_SameUserCancellingReservation_ReturnTrue()
         {
             // arrange
-            var reservation = new Reservation();
-            //var reservationMadeByUser = new Reservation().MadeBy;
             var user = new User();
+            var reservation = new Reservation{MadeBy = user};
 
             // act
             var result = reservation.CanBeCancelledBy(user);
