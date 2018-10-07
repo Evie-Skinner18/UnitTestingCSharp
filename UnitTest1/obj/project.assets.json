@@ -1613,6 +1613,15 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "TestNinja/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/TestNinja.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TestNinja.dll": {}
+        }
       }
     }
   },
@@ -5678,6 +5687,11 @@
         "system.xml.xpath.xmldocument.4.0.1.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "TestNinja/1.0.0": {
+      "type": "project",
+      "path": "../TestNinja/TestNinja.csproj",
+      "msbuildProject": "../TestNinja/TestNinja.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5685,7 +5699,8 @@
       "MSTest.TestAdapter >= 1.2.1",
       "MSTest.TestFramework >= 1.2.1",
       "Microsoft.NET.Test.Sdk >= 15.7.0",
-      "Microsoft.NETCore.App >= 2.1.0"
+      "Microsoft.NETCore.App >= 2.1.0",
+      "TestNinja >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5715,7 +5730,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/eves/Projects/source-code-starter/TestNinja/TestNinja/TestNinja.csproj": {
+              "projectPath": "/Users/eves/Projects/source-code-starter/TestNinja/TestNinja/TestNinja.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
