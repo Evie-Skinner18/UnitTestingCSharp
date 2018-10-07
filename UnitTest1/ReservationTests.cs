@@ -35,10 +35,18 @@ namespace TestNinja.UnitTests
         }
 
         [TestMethod]
-        public void CannotBeCancelledByNonAdminUser_ReturnFalse()
+        public void CanBeCancelledByNonAdminUser_ReturnFalse()
         {
             var reservation = new Reservation();
             var result = reservation.CanBeCancelledBy(new User{IsAdmin = false});
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void CanBeCancelledByAnotherUserWhoDidNotMakeBooking_ReturnFalse()
+        {
+            var reservation = new Reservation { MadeBy = new User()};
+            var result = reservation.CanBeCancelledBy(new User());
             Assert.IsFalse(result);
         }
     }
